@@ -1,215 +1,175 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import { Flame } from 'lucide-react';
-import { createPageUrl } from '../utils';
+<!DOCTYPE html>
+<html lang="en">
 
-// ═══════════════════════════════════════════════════════════════════════════════
-// 🎮 ADD YOUR SCRIPTS HERE - Just copy a script object and fill in the details!
-// ═══════════════════════════════════════════════════════════════════════════════
-export const SCRIPTS = [
-  {
-    id: 1,
-    title: "Infinite Jump",
-    description: "Allows your character to jump infinitely in the air. Great for reaching high places!",
-    image: "https://images.unsplash.com/photo-1614294149010-950b698f72c0?w=400&h=250&fit=crop",
-    views: "5.1k",
-    script: `-- Infinite Jump Script
-local UserInputService = game:GetService("UserInputService")
-local player = game.Players.LocalPlayer
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ScriptBlox</title>
+  <style>
+    /* Add styles here based on the classes you have in your React code */
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f9fafb;
+      color: #333;
+    }
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+    .header, .footer {
+      background-color: white;
+      border-bottom: 1px solid #e5e7eb;
+      padding: 16px 0;
+      position: sticky;
+      top: 0;
+      z-index: 50;
+    }
+    .header .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .logo span {
+      font-size: 20px;
+      font-weight: bold;
+      color: #111827;
+    }
+    .main {
+      padding: 48px 0;
+    }
+    .main h1 {
+      font-size: 32px;
+      color: #111827;
+      margin-bottom: 32px;
+    }
+    .script-card {
+      background-color: white;
+      border: 1px solid #e5e7eb;
+      border-radius: 16px;
+      overflow: hidden;
+      transition: transform 0.3s ease;
+      margin-bottom: 20px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+    .script-card:hover {
+      transform: scale(1.05);
+    }
+    .script-card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+    .script-card .content {
+      padding: 16px;
+    }
+    .script-card .content h3 {
+      font-size: 16px;
+      font-weight: 600;
+      color: #111827;
+      margin: 0;
+      margin-bottom: 8px;
+    }
+    .script-card .content p {
+      font-size: 14px;
+      color: #4b5563;
+    }
+  </style>
+</head>
 
-UserInputService.JumpRequest:Connect(function()
-    if player.Character then
-        player.Character:FindFirstChildOfClass("Humanoid"):ChangeState("Jumping")
-    end
-end)`
-  },
-  {
-    id: 2,
-    title: "Speed Boost",
-    description: "Increases your walk speed to move faster across the map. Adjustable speed value.",
-    image: "https://images.unsplash.com/photo-1511512578047-dfb367046420?w=400&h=250&fit=crop",
-    views: "3.8k",
-    script: `-- Speed Boost Script
-local player = game.Players.LocalPlayer
-local character = player.Character or player.CharacterAdded:Wait()
-local humanoid = character:WaitForChild("Humanoid")
+<body>
+  <div class="container">
+    <!-- Header -->
+    <header class="header">
+      <div class="logo">
+        <span>📜 ScriptBlox</span>
+      </div>
+      <nav>
+        <a href="#" class="nav-item">🏠 Home</a>
+        <a href="#" class="nav-item">🔥 Trending</a>
+      </nav>
+    </header>
 
--- Change 50 to your desired speed
-humanoid.WalkSpeed = 50`
-  },
-  {
-    id: 3,
-    title: "Fly Script",
-    description: "Enables flight mode for your character. Use E to toggle, WASD to move while flying.",
-    image: "https://images.unsplash.com/photo-1534423861386-85a16f5d13fd?w=400&h=250&fit=crop",
-    views: "7.2k",
-    script: `-- Fly Script (Press E to toggle)
-local flying = false
-local speed = 50
+    <!-- Main Content -->
+    <main class="main">
+      <h1>Check out recent trending scripts</h1>
 
-game:GetService("UserInputService").InputBegan:Connect(function(input)
-    if input.KeyCode == Enum.KeyCode.E then
-        flying = not flying
-        local player = game.Players.LocalPlayer
-        local char = player.Character
-        if flying then
-            -- Enable fly
-            local bp = Instance.new("BodyPosition", char.HumanoidRootPart)
-            bp.Name = "FlyBP"
-            bp.MaxForce = Vector3.new(math.huge, math.huge, math.huge)
-        else
-            -- Disable fly
-            char.HumanoidRootPart:FindFirstChild("FlyBP"):Destroy()
-        end
-    end
-end)`
-  },
-  {
-    id: 4,
-    title: "ESP Players",
-    description: "Highlights all players through walls with colored boxes. Great for finding other players.",
-    image: "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=400&h=250&fit=crop",
-    views: "6.4k",
-    script: `-- ESP Script
-local Players = game:GetService("Players")
+      <!-- Scripts Grid -->
+      <div class="scripts-grid">
+        <!-- Script Card 1 -->
+        <div class="script-card">
+          <img src="https://images.unsplash.com/photo-1614294149010-950b698f72c0?w=400&h=250&fit=crop" alt="Infinite Jump Script">
+          <div class="content">
+            <h3>Infinite Jump</h3>
+            <p>Allows your character to jump infinitely in the air. Great for reaching high places!</p>
+            <span>👁 5.1k views</span>
+          </div>
+        </div>
 
-local function addESP(player)
-    if player ~= Players.LocalPlayer then
-        local highlight = Instance.new("Highlight")
-        highlight.Parent = player.Character
-        highlight.FillColor = Color3.new(1, 0, 0)
-        highlight.OutlineColor = Color3.new(1, 1, 1)
-        highlight.FillTransparency = 0.5
-    end
-end
+        <!-- Script Card 2 -->
+        <div class="script-card">
+          <img src="https://images.unsplash.com/photo-1511512578047-dfb367046420?w=400&h=250&fit=crop" alt="Speed Boost Script">
+          <div class="content">
+            <h3>Speed Boost</h3>
+            <p>Increases your walk speed to move faster across the map. Adjustable speed value.</p>
+            <span>👁 3.8k views</span>
+          </div>
+        </div>
 
-Players.PlayerAdded:Connect(function(player)
-    player.CharacterAdded:Connect(function()
-        addESP(player)
-    end)
-end)
+        <!-- Script Card 3 -->
+        <div class="script-card">
+          <img src="https://images.unsplash.com/photo-1534423861386-85a16f5d13fd?w=400&h=250&fit=crop" alt="Fly Script">
+          <div class="content">
+            <h3>Fly Script</h3>
+            <p>Enables flight mode for your character. Use E to toggle, WASD to move while flying.</p>
+            <span>👁 7.2k views</span>
+          </div>
+        </div>
 
-for _, player in pairs(Players:GetPlayers()) do
-    if player.Character then addESP(player) end
-end`
-  },
-  {
-    id: 5,
-    title: "Auto Farm",
-    description: "Automatically farms resources for you. Set it and forget it!",
-    image: "https://images.unsplash.com/photo-1552820728-8b83bb6b773f?w=400&h=250&fit=crop",
-    views: "9.1k",
-    script: `-- Auto Farm Script
-local player = game.Players.LocalPlayer
-local farming = true
+        <!-- Script Card 4 -->
+        <div class="script-card">
+          <img src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=400&h=250&fit=crop" alt="ESP Players Script">
+          <div class="content">
+            <h3>ESP Players</h3>
+            <p>Highlights all players through walls with colored boxes. Great for finding other players.</p>
+            <span>👁 6.4k views</span>
+          </div>
+        </div>
 
-while farming do
-    -- Your auto farm logic here
-    wait(1)
-end`
-  },
-  {
-    id: 6,
-    title: "Anti-AFK",
-    description: "Prevents you from being kicked for inactivity. Stay in the game longer!",
-    image: "https://images.unsplash.com/photo-1556438064-2d7646166914?w=400&h=250&fit=crop",
-    views: "4.7k",
-    script: `-- Anti-AFK Script
-local VirtualUser = game:GetService("VirtualUser")
+        <!-- Script Card 5 -->
+        <div class="script-card">
+          <img src="https://images.unsplash.com/photo-1552820728-8b83bb6b773f?w=400&h=250&fit=crop" alt="Auto Farm Script">
+          <div class="content">
+            <h3>Auto Farm</h3>
+            <p>Automatically farms resources for you. Set it and forget it!</p>
+            <span>👁 9.1k views</span>
+          </div>
+        </div>
 
-game:GetService("Players").LocalPlayer.Idled:Connect(function()
-    VirtualUser:CaptureController()
-    VirtualUser:ClickButton2(Vector2.new())
-end)`
-  },
-];
-// ═══════════════════════════════════════════════════════════════════════════════
-
-function ScriptCard({ id, title, image, views }) {
-  return (
-    <Link 
-      to={createPageUrl(`ScriptDetails?id=${id}`)}
-      className="group relative bg-white rounded-xl overflow-hidden border border-gray-200 hover:shadow-lg transition-all duration-300"
-    >
-      {/* Image */}
-      <div className="relative h-40 overflow-hidden bg-gray-100">
-        <img 
-          src={image} 
-          alt={title}
-          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-        />
-        {/* Views badge */}
-        <div className="absolute top-3 left-3 px-2.5 py-1 bg-black/60 backdrop-blur-sm rounded-md">
-          <span className="text-xs font-medium text-white">👁 {views}</span>
+        <!-- Script Card 6 -->
+        <div class="script-card">
+          <img src="https://images.unsplash.com/photo-1556438064-2d7646166914?w=400&h=250&fit=crop" alt="Anti-AFK Script">
+          <div class="content">
+            <h3>Anti-AFK</h3>
+            <p>Prevents you from being kicked for inactivity. Stay in the game longer!</p>
+            <span>👁 4.7k views</span>
+          </div>
         </div>
       </div>
 
-      {/* Content */}
-      <div className="p-4">
-        <h3 className="text-sm font-semibold text-gray-900 line-clamp-2">
-          {title}
-        </h3>
+      <!-- Empty State if no scripts (can remove later) -->
+      <div class="empty-state" style="display: none;">
+        <p>No scripts available</p>
       </div>
-    </Link>
-  );
-}
+    </main>
 
-export default function Home() {
-  return (
-    <div className="min-h-screen bg-gray-50">
-      {/* Header */}
-      <header className="bg-white border-b border-gray-200 sticky top-0 z-50">
-        <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
-          <Link to={createPageUrl('Home')} className="flex items-center gap-2">
-            <div className="w-8 h-8 bg-indigo-600 rounded-lg flex items-center justify-center">
-              <span className="text-white font-bold text-lg">📜</span>
-            </div>
-            <span className="text-xl font-bold text-gray-900">ScriptBlox</span>
-          </Link>
-          
-          <nav className="flex items-center gap-6">
-            <Link to={createPageUrl('Home')} className="flex items-center gap-2 text-gray-700 hover:text-gray-900 text-sm font-medium">
-              <span>🏠</span>
-              <span>Home</span>
-            </Link>
-            <Link to={createPageUrl('Home')} className="flex items-center gap-2 text-indigo-600 text-sm font-medium">
-              <Flame className="w-4 h-4" />
-              <span>Trending</span>
-            </Link>
-          </nav>
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="footer-content">
+        <span>© 2025 ScriptBlox</span>
+      </div>
+    </footer>
+  </div>
+</body>
 
-          <div className="flex items-center gap-3">
-            <button className="px-4 py-2 text-sm font-medium text-gray-700 hover:text-gray-900">
-              Login
-            </button>
-            <button className="px-4 py-2 bg-indigo-600 text-white text-sm font-medium rounded-lg hover:bg-indigo-700">
-              Sign Up
-            </button>
-          </div>
-        </div>
-      </header>
-
-      {/* Main Content */}
-      <main className="max-w-7xl mx-auto px-6 py-12">
-        {/* Title */}
-        <h1 className="text-3xl font-bold text-gray-900 mb-8 flex items-center gap-2">
-          Check out recent trending scripts <Flame className="w-7 h-7 text-orange-500" />
-        </h1>
-
-        {/* Scripts Grid */}
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-          {SCRIPTS.map((script) => (
-            <ScriptCard key={script.id} {...script} />
-          ))}
-        </div>
-
-        {/* Empty state */}
-        {SCRIPTS.length === 0 && (
-          <div className="text-center py-20">
-            <p className="text-gray-400">No scripts available</p>
-          </div>
-        )}
-      </main>
-    </div>
-  );
-}
+</html>
