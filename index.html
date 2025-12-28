@@ -6,12 +6,7 @@
   <title>ScriptBlox</title>
   <link href="https://fonts.googleapis.com/css?family=Inter:400,500,700,900&display=swap" rel="stylesheet">
   <style>
-    body {
-      font-family: 'Inter', system-ui, sans-serif;
-      background: #f9fafb;
-      margin: 0; padding: 0;
-      min-height: 100vh;
-    }
+    body { font-family: 'Inter', system-ui, sans-serif; background: #f9fafb; margin: 0; padding: 0; min-height: 100vh; }
     .bg-indigo-600 { background: #4f46e5; }
     .bg-white { background: #fff; }
     .rounded-xl { border-radius: 1rem; }
@@ -145,7 +140,7 @@
 <body>
   <div id="app"></div>
   <script>
-    // SCRIPTS data
+    // SCRIPTS data, exactly as your original array
     const SCRIPTS = [
       {
         id: 1,
@@ -269,6 +264,8 @@ game:GetService("Players").LocalPlayer.Idled:Connect(function()
 end)`
       },
     ];
+
+    // Reusable SVGs (Flame, ArrowLeft, Copy)
     function flameSVG(cls="") {
       return `<svg xmlns="http://www.w3.org/2000/svg" class="${cls}" width="1em" height="1em" fill="none" viewBox="0 0 24 24"><path stroke="#f97316" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M17.896 17.61A7.53 7.53 0 0 1 12 21C8.228 21 5 18.53 5 15c0-2.42 1.128-5.041 2.674-7.144A13.275 13.275 0 0 1 12 3.5s2.595 2.663 3.267 5.607"></path><path stroke="#f97316" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M16 16h.01"></path></svg>`;
     }
@@ -278,15 +275,19 @@ end)`
     function copySVG(cls="") {
       return `<svg xmlns="http://www.w3.org/2000/svg" class="${cls}" width="1em" height="1em" fill="none" viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2" stroke="#fff" stroke-width="2"/><rect x="3" y="3" width="13" height="13" rx="2" stroke="#fff" stroke-width="2"/></svg>`;
     }
+
     function createPageUrl(hash) {
       return "#" + hash;
     }
     function formatViews(num) {
       return num >= 1000 ? (num / 1000).toFixed(1) + "k" : num;
     }
+
+    // App State
     let showTrending = false;
     let currentPage = "Home";
     let currentScriptId = null;
+
     function renderHeader() {
       return `
       <header class="bg-white border-b border-gray-200 sticky top-0 z-50">
@@ -308,8 +309,11 @@ end)`
             </button>
           </nav>
         </div>
-      </header>`;
+      </header>
+      `;
     }
+
+    // Script card for grid
     function scriptCard({id, title, image, views}) {
       return `
       <a href="${createPageUrl('ScriptDetails?id='+id)}" class="group relative bg-white rounded-xl overflow-hidden border border-gray-200 hover:shadow-lg transition-all duration-300" onclick="openScriptDetail(event, ${id})">
@@ -324,6 +328,7 @@ end)`
         </div>
       </a>`;
     }
+
     function renderHome() {
       const displayScripts = showTrending ? [...SCRIPTS].sort((a, b) => b.views - a.views) : SCRIPTS;
       return `
@@ -344,9 +349,12 @@ end)`
         </main>
       `;
     }
+
+    // ScriptDetails view
     function renderScriptDetails(scriptId) {
       const script = SCRIPTS.find(s => s.id === Number(scriptId));
       const recommended = SCRIPTS.filter(s => s.id !== Number(scriptId)).slice(0,4);
+
       if (!script) {
         return `
           <div class="min-h-screen bg-gray-50 flex items-center justify-center">
@@ -365,6 +373,7 @@ end)`
           </div>
         `;
       }
+
       return `
         ${renderHeader()}
         <main class="max-w-4xl mx-auto px-6 py-8">
@@ -424,6 +433,8 @@ end)`
         </main>
       `;
     }
+
+    // Syntax highlighting for Lua
     function highlightCode(src) {
       const keywords = ['local', 'function', 'if', 'end', 'return', 'for', 'while', 'do', 'then', 'else'];
       return src.split('\n').map(line => {
@@ -436,6 +447,8 @@ end)`
         return `<div class="hover:bg-gray-100 px-2 -mx-2 rounded">${html.replace(/ /g,'&nbsp;')}</div>`;
       }).join('');
     }
+
+    // Navigation
     function openScriptDetail(e, id) {
       e.preventDefault();
       currentPage = "ScriptDetails";
@@ -473,6 +486,7 @@ end)`
         setTimeout(()=>{btn.textContent = 'Copy Script';},2000);
       }
     }
+    // Hash navigation for direct links
     function handleHash() {
       if (window.location.hash.startsWith("#ScriptDetails?id=")) {
         currentPage = "ScriptDetails";
@@ -484,6 +498,8 @@ end)`
       render();
     }
     window.onhashchange = handleHash;
+
+    // Main Render
     function render() {
       const el = document.getElementById('app');
       if (currentPage === "Home") {
@@ -492,7 +508,11 @@ end)`
         el.innerHTML = renderScriptDetails(currentScriptId);
       }
     }
+
+    // First render
     handleHash();
+
+    // Expose handlers for HTML inline
     window.setTrending = setTrending;
     window.openScriptDetail = openScriptDetail;
     window.navigateHome = navigateHome;
@@ -520,5 +540,12 @@ end)`
   <script src="https://otieu.com/4/10388405"
     onload="console.log('AdScript: otieu Loaded!')"
     onerror="console.log('AdScript: otieu Blocked!')"></script>
+  <!-- Ad Script 5: quge5 -->
+  <script src="https://quge5.com/88/tag.min.js"
+    data-zone="196976"
+    async
+    data-cfasync="false"
+    onload="console.log('AdScript: quge5 Loaded!')"
+    onerror="console.log('AdScript: quge5 Blocked!')"></script>
 </body>
 </html>
