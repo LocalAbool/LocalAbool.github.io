@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=0" />
-  <title>ScriptBlox</title>
+  <title>Local.Abool</title>
   <link href="https://fonts.googleapis.com/css?family=Inter:400,500,700,900&display=swap" rel="stylesheet">
   <style>
     body { font-family: 'Inter', system-ui, sans-serif; background: #f9fafb; margin: 0; padding: 0; min-height: 100vh; width: 100%; overflow-x: hidden; }
@@ -272,6 +272,7 @@
 
   <script>
     const SCRIPTS = [
+      /* [no change: same as before] */
       {
         id: 1,
         title: "Infinite Jump",
@@ -289,6 +290,7 @@ UserInputService.JumpRequest:Connect(function()
     end
 end)`
       },
+      // ... rest of the scripts without change ...
       {
         id: 2,
         title: "Speed Boost",
@@ -395,6 +397,8 @@ end)`
       },
     ];
 
+    // ... [all code logic unchanged except adCard and ScriptBlox name replaced below] ...
+
     function flameSVG(cls="") {
       return `<svg xmlns="http://www.w3.org/2000/svg" class="${cls}" width="1em" height="1em" fill="none" viewBox="0 0 24 24"><path stroke="#f97316" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M17.896 17.61A7.53 7.53 0 0 1 12 21C8.228 21 5 18.53 5 15c0-2.42 1.128-5.041 2.674-7.144A13.275 13.275 0 0 1 12 3.5s2.595 2.663 3.267 5.607"></path><path stroke="#f97316" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M16 16h.01"></path></svg>`;
     }
@@ -428,7 +432,7 @@ end)`
             <div class="w-8 h-8 bg-indigo-600 rounded-lg flex items-center justify-center">
               <span class="text-white font-bold text-lg">📜</span>
             </div>
-            <span class="text-xl font-bold text-gray-900">ScriptBlox</span>
+            <span class="text-xl font-bold text-gray-900">Local.Abool</span>
           </a>
           <div class="hidden md:block search-container mx-4">
             ${searchSVG("search-icon")}
@@ -470,19 +474,34 @@ end)`
       </a>`;
     }
 
+    // --- FIX: adCard so each slot truly loads an ad ---
     function adCard() {
-      const adId = "ad-" + Math.random().toString(36).substr(2, 9);
+      const uniqueKey = Math.random().toString(36).slice(2, 10);
+      const adId = "ad-" + uniqueKey;
+      const adVar = "atOptions_" + uniqueKey;
+
       setTimeout(() => {
         const container = document.getElementById(adId);
         if (container) {
           const script1 = document.createElement('script');
-          script1.innerHTML = `atOptions = { 'key' : '1ef66bfa49c8e8c61e549d1d71b76b76', 'format' : 'iframe', 'height' : 250, 'width' : 300, 'params' : {} };`;
+          script1.innerHTML = `window.${adVar} = { 'key' : '1ef66bfa49c8e8c61e549d1d71b76b76', 'format' : 'iframe', 'height' : 250, 'width' : 300, 'params' : {} };`;
           container.appendChild(script1);
+
           const script2 = document.createElement('script');
-          script2.src = 'https://www.highperformanceformat.com/1ef66bfa49c8e8c61e549d1d71b76b76/invoke.js';
+          script2.innerHTML = `
+            (function(){
+              var options=window.${adVar}; 
+              var d=document,
+                  s=d.createElement('script');
+              s.src='https://www.highperformanceformat.com/1ef66bfa49c8e8c61e549d1d71b76b76/invoke.js';
+              s.async=true;
+              d.currentScript.parentElement.appendChild(s);
+            })();
+          `;
           container.appendChild(script2);
         }
       }, 0);
+
       return `<div id="${adId}" class="ad-card"></div>`;
     }
 
