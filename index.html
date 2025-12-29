@@ -111,19 +111,15 @@
     .hover\:text-gray-900:hover {color: #111827;}
     .hover\:text-indigo-700:hover {color: #3730a3;}
     .group:hover .group-hover\:scale-110 {transform: scale(1.1);}
-    
     @media (max-width: 767px) {
       .max-w-7xl, .max-w-4xl, main, header > div {max-width: 100% !important; padding-left: 1rem !important; padding-right: 1rem !important;}
       .grid-cols-2, .md\:grid-cols-3, .md\:grid-cols-4, .grid-cols-3, .grid-cols-4 {grid-template-columns: 1fr !important;}
       .text-3xl { font-size: 1.5rem !important; }
       .p-8 { padding: 1rem !important; }
       .h-64 { height: 12rem !important; }
-      
-      /* Hide "Made with Replit" badge */
       #replit-badge { display: none !important; }
       iframe[src*="replit.com/badge"] { display: none !important; }
     }
-
     .cursor-pointer {cursor:pointer;}
     .overflow-x-auto {overflow-x:auto;}
     .border {border:1px solid #e5e7eb;}
@@ -138,8 +134,6 @@
     .leading-relaxed {line-height: 1.6;}
     a, button { outline:none;}
     .hidden {display:none;}
-
-    /* RESPONSIVE LAYOUT STYLES */
     .layout-container {
       display: flex;
       max-width: 1200px;
@@ -169,8 +163,6 @@
         margin: 0 0 0 20px;
       }
     }
-    
-    /* Phone Specific Ad Adjustments */
     @media (max-width: 767px) {
       .layout-sidebar-right {
         width: 100% !important;
@@ -187,7 +179,6 @@
         gap: 20px !important;
       }
     }
-
     .search-container {
       position: relative;
       max-width: 400px;
@@ -222,7 +213,6 @@
     }
   </style>
   <style>
-    /* Global Replit badge removal */
     .replit-auth-button, #replit-badge, iframe[src*="replit.com/badge"], .replit-badge {
       display: none !important;
       visibility: hidden !important;
@@ -230,12 +220,10 @@
       pointer-events: none !important;
     }
   </style>
-  <!-- NEW AD SCRIPTS IN HEAD -->
   <script src="https://pl28354591.effectivegatecpm.com/71/57/18/7157184b3004eeaf20954e0076346feb.js"></script>
   <script src="https://pl28354604.effectivegatecpm.com/1e/a7/b7/1ea7b768378ea2114d0e1aaa8c750ba0.js"></script>
 </head>
 <body>
-  <!-- 728x90 banner under header (centered) -->
   <div style="display:flex;justify-content:center;margin:20px 0; max-width: 100%; overflow: hidden;">
     <script>
       atOptions = {
@@ -248,14 +236,10 @@
     </script>
     <script src="https://www.highperformanceformat.com/063119b72d9b7e12b26344c8d96ecc88/invoke.js"></script>
   </div>
-
   <div class="layout-container">
-    <!-- Main app container -->
     <div class="layout-content">
       <div id="app"></div>
     </div>
-
-    <!-- 160x600 banner right -->
     <div class="layout-sidebar-right">
       <script>
         atOptions = {
@@ -269,10 +253,8 @@
       <script src="https://www.highperformanceformat.com/183ae01d06f739dd1de52c42fd74dde7/invoke.js"></script>
     </div>
   </div>
-
   <script>
     const SCRIPTS = [
-      /* [no change: same as before] */
       {
         id: 1,
         title: "Infinite Jump",
@@ -290,7 +272,6 @@ UserInputService.JumpRequest:Connect(function()
     end
 end)`
       },
-      // ... rest of the scripts without change ...
       {
         id: 2,
         title: "Speed Boost",
@@ -397,8 +378,6 @@ end)`
       },
     ];
 
-    // ... [all code logic unchanged except adCard and ScriptBlox name replaced below] ...
-
     function flameSVG(cls="") {
       return `<svg xmlns="http://www.w3.org/2000/svg" class="${cls}" width="1em" height="1em" fill="none" viewBox="0 0 24 24"><path stroke="#f97316" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M17.896 17.61A7.53 7.53 0 0 1 12 21C8.228 21 5 18.53 5 15c0-2.42 1.128-5.041 2.674-7.144A13.275 13.275 0 0 1 12 3.5s2.595 2.663 3.267 5.607"></path><path stroke="#f97316" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M16 16h.01"></path></svg>`;
     }
@@ -411,14 +390,12 @@ end)`
     function searchSVG(cls="") {
       return `<svg xmlns="http://www.w3.org/2000/svg" class="${cls}" width="1em" height="1em" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>`;
     }
-
     function createPageUrl(hash) {
       return "#" + hash;
     }
     function formatViews(num) {
       return num >= 1000 ? (num / 1000).toFixed(1) + "k" : num;
     }
-
     let showTrending = false;
     let currentPage = "Home";
     let currentScriptId = null;
@@ -458,7 +435,6 @@ end)`
       </header>
       `;
     }
-
     function scriptCard({id, title, image, views}) {
       return `
       <a href="${createPageUrl('ScriptDetails?id='+id)}" class="group relative bg-white rounded-xl overflow-hidden border border-gray-200 hover:shadow-lg transition-all duration-300" onclick="openScriptDetail(event, ${id})">
@@ -473,44 +449,32 @@ end)`
         </div>
       </a>`;
     }
-
-    // --- FIX: adCard so each slot truly loads an ad ---
     function adCard() {
       const uniqueKey = Math.random().toString(36).slice(2, 10);
       const adId = "ad-" + uniqueKey;
-      const adVar = "atOptions_" + uniqueKey;
-
       setTimeout(() => {
         const container = document.getElementById(adId);
         if (container) {
-          const script1 = document.createElement('script');
-          script1.innerHTML = `window.${adVar} = { 'key' : '1ef66bfa49c8e8c61e549d1d71b76b76', 'format' : 'iframe', 'height' : 250, 'width' : 300, 'params' : {} };`;
-          container.appendChild(script1);
-
-          const script2 = document.createElement('script');
-          script2.innerHTML = `
-            (function(){
-              var options=window.${adVar}; 
-              var d=document,
-                  s=d.createElement('script');
-              s.src='https://www.highperformanceformat.com/1ef66bfa49c8e8c61e549d1d71b76b76/invoke.js';
-              s.async=true;
-              d.currentScript.parentElement.appendChild(s);
-            })();
-          `;
-          container.appendChild(script2);
+          window.atOptions = {
+            'key' : '1ef66bfa49c8e8c61e549d1d71b76b76',
+            'format' : 'iframe',
+            'height' : 250,
+            'width' : 300,
+            'params' : {}
+          };
+          const script = document.createElement('script');
+          script.src = 'https://www.highperformanceformat.com/1ef66bfa49c8e8c61e549d1d71b76b76/invoke.js';
+          script.async = true;
+          container.appendChild(script);
         }
       }, 0);
-
       return `<div id="${adId}" class="ad-card"></div>`;
     }
-
     function renderHome() {
       let displayScripts = showTrending ? [...SCRIPTS].sort((a, b) => b.views - a.views) : SCRIPTS;
       if (searchQuery) {
         displayScripts = displayScripts.filter(s => s.title.toLowerCase().includes(searchQuery.toLowerCase()));
       }
-
       const gridItems = [];
       displayScripts.forEach((script, index) => {
         gridItems.push(scriptCard(script));
@@ -518,7 +482,6 @@ end)`
           gridItems.push(adCard());
         }
       });
-
       return `
         ${renderHeader()}
         <main class="max-w-7xl mx-auto px-6 py-12">
@@ -537,11 +500,9 @@ end)`
         </main>
       `;
     }
-
     function renderScriptDetails(scriptId) {
       const script = SCRIPTS.find(s => s.id === Number(scriptId));
       const recommended = SCRIPTS.filter(s => s.id !== Number(scriptId)).slice(0,4);
-
       if (!script) {
         return `
           <div class="min-h-screen bg-gray-50 flex items-center justify-center">
@@ -556,7 +517,6 @@ end)`
           </div>
         `;
       }
-
       const recommendedItems = [];
       recommended.forEach((recScript, index) => {
         recommendedItems.push(scriptCard(recScript));
@@ -564,7 +524,6 @@ end)`
           recommendedItems.push(adCard());
         }
       });
-
       return `
         ${renderHeader()}
         <main class="max-w-4xl mx-auto px-6 py-8">
@@ -620,7 +579,6 @@ end)`
         </main>
       `;
     }
-
     function highlightCode(src) {
       const keywords = ['local', 'function', 'if', 'end', 'return', 'for', 'while', 'do', 'then', 'else'];
       return src.split('\n').map(line => {
@@ -633,7 +591,6 @@ end)`
         return `<div class="hover:bg-gray-100 px-2 -mx-2 rounded">${html.replace(/ /g,'&nbsp;')}</div>`;
       }).join('');
     }
-
     function handleSearch(e) {
       searchQuery = e.target.value;
       render();
@@ -673,8 +630,6 @@ end)`
         let btn = document.getElementById('copy-btn-text');
         btn.textContent = 'Copied!';
         setTimeout(()=>{btn.textContent = 'Copy Script';},2000);
-        
-        // Open smart link
         window.open("https://www.effectivegatecpm.com/uw2i16p1e?key=24001f0b404d36d6c209c0c5be845eb0", "_blank");
       }
     }
@@ -689,7 +644,6 @@ end)`
       render();
     }
     window.onhashchange = handleHash;
-
     function render() {
       const el = document.getElementById('app');
       if (currentPage === "Home") {
@@ -698,7 +652,6 @@ end)`
         el.innerHTML = renderScriptDetails(currentScriptId);
       }
     }
-
     handleHash();
     window.setTrending = setTrending;
     window.openScriptDetail = openScriptDetail;
