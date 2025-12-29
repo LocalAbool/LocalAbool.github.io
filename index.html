@@ -3,159 +3,172 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>ScriptBlox</title>
+  <title>Local.Abool</title>
   <link href="https://fonts.googleapis.com/css?family=Inter:400,500,700,900&display=swap" rel="stylesheet">
   <style>
-    body { font-family: 'Inter', system-ui, sans-serif; background: #f9fafb; margin: 0; padding: 0; min-height: 100vh; }
-    .bg-indigo-600 { background: #4f46e5; }
-    .bg-white { background: #fff; }
-    .rounded-xl { border-radius: 1rem; }
-    .rounded-2xl { border-radius: 1.5rem; }
-    .rounded-lg { border-radius: .5rem; }
-    .rounded-md { border-radius: .4rem; }
-    .overflow-hidden { overflow: hidden; }
-    .border { border: 1px solid #e5e7eb; }
-    .border-gray-200 { border-color: #e5e7eb; }
-    .min-h-screen { min-height: 100vh; }
-    .bg-gray-50 { background: #f9fafb; }
-    .bg-gray-100 { background: #f3f4f6; }
-    .bg-black\/60 { background: rgba(0,0,0,.60); }
-    .backdrop-blur-sm { backdrop-filter: blur(4px);}
-    .text-lg { font-size: 1.125rem; }
-    .text-xl { font-size: 1.25rem; }
-    .text-2xl { font-size: 1.5rem; }
-    .text-3xl { font-size: 1.875rem; }
-    .font-bold { font-weight: 700; }
-    .font-semibold { font-weight: 600; }
-    .font-medium { font-weight: 500; }
-    .text-white { color:#fff;}
-    .text-gray-400 { color:#9ca3af;}
-    .text-gray-500 { color:#6b7280;}
-    .text-gray-600 { color:#4b5563;}
-    .text-gray-700 { color:#374151;}
-    .text-gray-800 { color:#1f2937;}
-    .text-gray-900 { color:#111827;}
-    .text-green-600 { color: #16a34a;}
-    .text-purple-600 { color: #8b5cf6;}
-    .text-orange-500 { color: #f97316;}
-    .text-indigo-600 { color:#4f46e5;}
-    .p-3  { padding:0.75rem;}
-    .p-4 { padding: 1rem;}
-    .p-6 { padding: 1.5rem;}
-    .p-8 { padding: 2rem;}
-    .px-2 {padding-left:.5rem;padding-right:.5rem;}
-    .px-2\.5 {padding-left:.625rem;padding-right:.625rem;}
-    .px-4 {padding-left:1rem;padding-right:1rem;}
-    .px-6 {padding-left:1.5rem;padding-right:1.5rem;}
-    .py-0\.5 {padding-top:2px;padding-bottom:2px;}
-    .py-1 { padding-top: .25rem; padding-bottom: .25rem; }
-    .py-3 { padding-top:.75rem;padding-bottom:.75rem;}
-    .py-4 { padding-top: 1rem; padding-bottom: 1rem; }
-    .py-8 { padding-top: 2rem; padding-bottom: 2rem; }
-    .py-12 {padding-top:3rem;padding-bottom:3rem;}
-    .mb-2 { margin-bottom: .5rem;}
-    .mb-3 {margin-bottom: .75rem;}
-    .mb-6 { margin-bottom: 1.5rem;}
-    .mb-8 {margin-bottom:2rem;}
-    .mt-12 {margin-top:3rem;}
-    .w-4 {width:1rem;}
-    .w-6 {width:1.5rem;}
-    .w-7 {width:1.75rem;}
-    .w-8 {width:2rem;}
-    .h-4 {height:1rem;}
-    .h-6 {height:1.5rem;}
-    .h-7 {height:1.75rem;}
-    .h-8 {height:2rem;}
-    .h-32 {height:8rem;}
-    .h-40 {height:10rem;}
-    .h-64 {height:16rem;}
-    .max-w-4xl {max-width:56rem;}
-    .max-w-7xl {max-width:80rem;}
-    .mx-auto {margin-left:auto;margin-right:auto;}
-    .gap-2 {gap:.5rem;}
-    .gap-4 {gap:1rem;}
-    .gap-6 {gap:1.5rem;}
-    .grid {display:grid;}
-    .grid-cols-2 {grid-template-columns:repeat(2,1fr);}
-    .grid-cols-3 {grid-template-columns:repeat(3,1fr);}
-    .grid-cols-4 {grid-template-columns:repeat(4,1fr);}
-    @media (min-width:768px){
-      .md\:grid-cols-3 {grid-template-columns:repeat(3,1fr);}
-      .md\:grid-cols-4 {grid-template-columns:repeat(4,1fr);}
+    html, body { height:100%; margin:0; padding:0; }
+    body { 
+      font-family: 'Inter', system-ui, sans-serif; 
+      background: #f9fafb; 
+      margin: 0; 
+      padding: 0; 
+      min-height: 100vh; 
+      height:100%;
+      overflow-x:hidden;
     }
-    .flex {display:flex;}
-    .inline-flex {display:inline-flex;}
-    .items-center {align-items:center;}
-    .items-between {justify-content:space-between;}
-    .justify-between {justify-content:space-between;}
-    .justify-center {justify-content:center;}
-    .line-clamp-2 {
-      display: -webkit-box;
-      -webkit-line-clamp: 2;
-      -webkit-box-orient: vertical;
-      overflow: hidden;
+    #app-root {
+      min-height:100vh;
+      min-width:0;
+      display: flex;
+      flex-direction: row;
+      width:100%;
     }
-    .shadow-lg {box-shadow:0 10px 15px -3px rgba(0,0,0,.1),0 4px 6px -4px rgba(0,0,0,.1);}
-    .shadow-sm {box-shadow:0 1px 2px 0 rgba(0,0,0,.05);}
-    .border-b {border-bottom:1px solid #e5e7eb;}
-    .sticky {position:sticky;}
-    .top-0 {top:0;}
-    .z-50 {z-index:50;}
-    .transition-all {transition:all .3s;}
-    .transition-transform {transition:transform .5s;}
-    .duration-300 {transition-duration: .3s;}
-    .duration-500 {transition-duration: .5s;}
-    .hover\:scale-110:hover {transform:scale(1.1);}
-    .hover\:shadow-lg:hover {box-shadow:0 10px 15px -3px rgba(0,0,0,.1),0 4px 6px -4px rgba(0,0,0,.1);}
-    .hover\:bg-indigo-700:hover {background:#4338ca;}
-    .hover\:text-gray-900:hover {color: #111827;}
-    .hover\:text-indigo-700:hover {color: #3730a3;}
-    .group:hover .group-hover\:scale-110 {transform: scale(1.1);}
+    .sidebar-ad {
+      width: 160px;
+      min-width: 100px;
+      max-width: 180px;
+      background: #fff;
+      box-shadow: 0 0 8px #e5e7eb77;
+      display: flex;
+      flex-direction: column;
+      align-items:center;
+      justify-content:flex-start;
+      z-index:100;
+      padding-top:24px;
+      padding-bottom:24px;
+    }
+    .main-content {
+      flex:1;
+      display: flex;
+      flex-direction: column;
+      min-width:0;
+    }
     @media (max-width: 700px) {
-      .max-w-7xl, .max-w-4xl, main, header > div {max-width: 100% !important;}
-      .grid-cols-2, .md\:grid-cols-3, .md\:grid-cols-4, .grid-cols-3, .grid-cols-4 {grid-template-columns: 1fr !important;}
+      #app-root {
+        flex-direction: row;
+      }
+      .sidebar-ad {
+        width: 64px !important;
+        min-width: 64px;
+        padding-left:0;
+        padding-right:0;
+      }
+      .main-content {
+        margin-left:0;
+        padding:0 !important;
+      }
     }
-    .cursor-pointer {cursor:pointer;}
-    .overflow-x-auto {overflow-x:auto;}
-    .border {border:1px solid #e5e7eb;}
-    .-mx-2 {margin-left:-.5rem;margin-right:-.5rem;}
-    .hover\:bg-gray-100:hover {background:#f3f4f6;}
-    button, .button, .btn {
-      outline:none;border:none;padding:.5rem 1rem;border-radius:.5rem;font-size:1rem;background:#4f46e5;color:white;font-weight:500;cursor:pointer;transition:background .2s;
+    /* Responsive site padding for grid/content */
+    .page-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 8px;
     }
-    button:hover, .button:hover, .btn:hover {background:#4338ca;}
-    pre {margin:0;}
-    .font-mono {font-family: Menlo, Monaco, 'Cascadia Mono','Segoe UI Mono','Roboto Mono',monospace;}
-    .leading-relaxed {line-height: 1.6;}
-    a, button { outline:none;}
-    .hidden {display:none;}
+    header {
+      background: #fff;
+      border-bottom: 1px solid #e5e7eb;
+      position: sticky;
+      top: 0;
+      z-index: 30;
+      width: 100%;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: #4f46e5;
+    }
+    /* Cards grid */
+    .grid-cards {
+      display:grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      margin-top: 16px;
+    }
+    @media (max-width: 900px) { .grid-cards { grid-template-columns: repeat(2,1fr); } }
+    @media (max-width: 600px) { .grid-cards { grid-template-columns: 1fr; } }
+    .card {
+      background: #fff;
+      border-radius: 1rem;
+      overflow: hidden;
+      box-shadow:0 0 6px 0 #ececec;
+      border: 1px solid #e5e7eb;
+      transition: box-shadow .3s, transform .25s;
+      display:flex;
+      flex-direction:column;
+    }
+    .card img { width:100%; height:140px; object-fit:cover; }
+    .card-content { padding: 18px 15px; flex:1; display:flex; flex-direction:column;}
+    .card-title {
+      font-size: 1rem;
+      font-weight:600;
+      color: #252525;
+      margin-bottom:10px;
+      line-clamp:2;
+    }
+    .card-desc {
+      font-size:.92rem;
+      color: #666;
+      margin-bottom:12px;
+      flex:1;
+    }
+    .card-views {
+      font-size:.86rem;
+      color: #8b5cf6;
+      font-weight:500;
+      margin-bottom:5px;
+    }
+    .card-link {
+      font-size:.96rem;
+      color:#4f46e5;
+      font-weight:600;
+      text-decoration:none;
+      margin-top:7px;
+      display:inline-block;
+    }
+    /* Script detail modal/responsive */
+    .script-details {
+      background:#fff;
+      border-radius:1.3rem;
+      box-shadow:0 6px 18px 0 #e5e7eb88;
+      max-width:640px;
+      margin:28px auto;
+      padding:32px 24px;
+      border: 1px solid #e5e7eb;
+    }
+    @media(max-width:700px){ .script-details { margin:10px 0; padding:17px 5px; max-width:95%;} }
+    .script-details img { width:100%; height:180px; border-radius:.8em; object-fit:cover; }
+    .script-details h1 {margin:.6em 0 .4em 0;font-family:inherit;font-size:1.6em;font-weight:700;}
+    .script-details pre {
+      background:#f4f4f6;
+      border-radius:.7em;
+      padding:1em;
+      margin:16px 0;
+      font-size:.95em;
+      white-space:pre-wrap;
+      overflow-x:auto;
+      font-family:Menlo, monospace;
+    }
+
+    .copy-btn {
+      padding:.5em 1em;
+      font-size:.9em;
+      background:#4f46e5;
+      color:#fff;
+      border:none;
+      border-radius:.5em;
+      cursor:pointer
+    }
+    .copy-btn:hover { background:#4338ca; }
   </style>
-  <!-- NEW AD SCRIPTS IN HEAD -->
-  <script src="https://pl28354591.effectivegatecpm.com/71/57/18/7157184b3004eeaf20954e0076346feb.js"></script>
-  <script src="https://pl28354604.effectivegatecpm.com/1e/a7/b7/1ea7b768378ea2114d0e1aaa8c750ba0.js"></script>
 </head>
 <body>
-  <!-- 728x90 banner under header (centered) -->
-  <div style="display:flex;justify-content:center;margin:20px 0;">
-    <script>
-      atOptions = {
-        'key' : '063119b72d9b7e12b26344c8d96ecc88',
-        'format' : 'iframe',
-        'height' : 90,
-        'width' : 728,
-        'params' : {}
-      };
-    </script>
-    <script src="https://www.highperformanceformat.com/063119b72d9b7e12b26344c8d96ecc88/invoke.js"></script>
-  </div>
-
-  <div style="display: flex; max-width: 1200px; margin: 0 auto;">
-    <div style="flex: 1;">
-      <!-- Main app container -->
-      <div id="app"></div>
-    </div>
-    <!-- 160x600 banner right sidebar -->
-    <div style="width:160px;min-width:160px;margin-left:20px;">
+  <div id="app-root">
+    <!-- Sidebar ad (always left side!) -->
+    <aside class="sidebar-ad">
+      <!-- Your 160x600 ad code here -->
       <script>
         atOptions = {
           'key' : '183ae01d06f739dd1de52c42fd74dde7',
@@ -166,86 +179,91 @@
         };
       </script>
       <script src="https://www.highperformanceformat.com/183ae01d06f739dd1de52c42fd74dde7/invoke.js"></script>
+    </aside>
+    <div class="main-content">
+      <header>
+        <div class="page-inner" style="display:flex;align-items:center;justify-content:space-between;gap:15px;height:64px;">
+          <div class="brand">
+            <span style="font-size:1.5em;">🌐</span>
+            Local.Abool
+          </div>
+          <nav style="display:flex;gap:25px;">
+            <button onclick="showHome()" style="background:none;border:none;font:inherit;color:#4f46e5;font-weight:600;cursor:pointer;">Home</button>
+            <button onclick="showTrending()" style="background:none;border:none;font:inherit;color:#8b5cf6;font-weight:600;cursor:pointer;">Trending</button>
+          </nav>
+        </div>
+      </header>
+      <div id="page-body" class="page-inner" style="padding-top:26px;padding-bottom:42px;">
+        <!-- Cards and main content render here by JS -->
+      </div>
     </div>
   </div>
 
-  <!-- Container ad and script at the bottom -->
-  <script async="async" data-cfasync="false" src="https://pl28354595.effectivegatecpm.com/671cae43d60bafcf64313bd137e03494/invoke.js"></script>
-  <div id="container-671cae43d60bafcf64313bd137e03494"></div>
-
-  <script>
-    // SCRIPTS data, exactly as your original array
-    const SCRIPTS = [
-      {
-        id: 1,
-        title: "Infinite Jump",
-        description: "Allows your character to jump infinitely in the air. Great for reaching high places!",
-        image: "https://images.unsplash.com/photo-1614294149010-950b698f72c0?w=400&h=250&fit=crop",
-        views: 5100,
-        gameLink: "https://www.roblox.com/games/123456789/Game-Name",
-        script: `-- Infinite Jump Script
+<script>
+const SCRIPTS = [
+  {
+    id: 1,
+    title: "Infinite Jump",
+    description: "Allows your character to jump infinitely in the air. Great for reaching high places!",
+    image: "https://images.unsplash.com/photo-1614294149010-950b698f72c0?w=400&h=250&fit=crop",
+    views: 5100,
+    gameLink: "https://www.roblox.com/games/123456789/Game-Name",
+    script: `-- Infinite Jump Script
 local UserInputService = game:GetService("UserInputService")
 local player = game.Players.LocalPlayer
-
 UserInputService.JumpRequest:Connect(function()
     if player.Character then
         player.Character:FindFirstChildOfClass("Humanoid"):ChangeState("Jumping")
     end
 end)`
-      },
-      {
-        id: 2,
-        title: "Speed Boost",
-        description: "Increases your walk speed to move faster across the map. Adjustable speed value.",
-        image: "https://images.unsplash.com/photo-1511512578047-dfb367046420?w=400&h=250&fit=crop",
-        views: 3800,
-        gameLink: "https://www.roblox.com/games/123456789/Game-Name",
-        script: `-- Speed Boost Script
+  },
+  {
+    id: 2,
+    title: "Speed Boost",
+    description: "Increases your walk speed to move faster across the map. Adjustable speed value.",
+    image: "https://images.unsplash.com/photo-1511512578047-dfb367046420?w=400&h=250&fit=crop",
+    views: 3800,
+    gameLink: "https://www.roblox.com/games/123456789/Game-Name",
+    script: `-- Speed Boost Script
 local player = game.Players.LocalPlayer
 local character = player.Character or player.CharacterAdded:Wait()
 local humanoid = character:WaitForChild("Humanoid")
-
--- Change 50 to your desired speed
 humanoid.WalkSpeed = 50`
-      },
-      {
-        id: 3,
-        title: "Fly Script",
-        description: "Enables flight mode for your character. Use E to toggle, WASD to move while flying.",
-        image: "https://images.unsplash.com/photo-1534423861386-85a16f5d13fd?w=400&h=250&fit=crop",
-        views: 7200,
-        gameLink: "https://www.roblox.com/games/123456789/Game-Name",
-        script: `-- Fly Script (Press E to toggle)
+  },
+  {
+    id: 3,
+    title: "Fly Script",
+    description: "Enables flight mode for your character. Use E to toggle, WASD to move while flying.",
+    image: "https://images.unsplash.com/photo-1534423861386-85a16f5d13fd?w=400&h=250&fit=crop",
+    views: 7200,
+    gameLink: "https://www.roblox.com/games/123456789/Game-Name",
+    script: `-- Fly Script (Press E to toggle)
 local flying = false
 local speed = 50
-
 game:GetService("UserInputService").InputBegan:Connect(function(input)
     if input.KeyCode == Enum.KeyCode.E then
         flying = not flying
         local player = game.Players.LocalPlayer
         local char = player.Character
         if flying then
-            -- Enable fly
             local bp = Instance.new("BodyPosition", char.HumanoidRootPart)
             bp.Name = "FlyBP"
             bp.MaxForce = Vector3.new(math.huge, math.huge, math.huge)
         else
-            -- Disable fly
             char.HumanoidRootPart:FindFirstChild("FlyBP"):Destroy()
         end
     end
 end)`
-      },
-      {
-        id: 4,
-        title: "ESP Players",
-        description: "Highlights all players through walls with colored boxes. Great for finding other players.",
-        image: "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=400&h=250&fit=crop",
-        views: 6400,
-        gameLink: "https://www.roblox.com/games/123456789/Game-Name",
-        script: `-- ESP Script
+  },
+  {
+    id: 4,
+    title: "ESP Players",
+    description: "Highlights all players through walls with colored boxes. Great for finding other players.",
+    image: "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=400&h=250&fit=crop",
+    views: 6400,
+    gameLink: "https://www.roblox.com/games/123456789/Game-Name",
+    script: `-- ESP Script
 local Players = game:GetService("Players")
-
 local function addESP(player)
     if player ~= Players.LocalPlayer then
         local highlight = Instance.new("Highlight")
@@ -255,302 +273,132 @@ local function addESP(player)
         highlight.FillTransparency = 0.5
     end
 end
-
 Players.PlayerAdded:Connect(function(player)
     player.CharacterAdded:Connect(function()
         addESP(player)
     end)
 end)
-
-for _, player in pairs(Players:GetPlayers()) do
+for (_, player) in pairs(Players:GetPlayers()) do
     if player.Character then addESP(player) end
 end`
-      },
-      {
-        id: 5,
-        title: "Auto Farm",
-        description: "Automatically farms resources for you. Set it and forget it!",
-        image: "https://images.unsplash.com/photo-1552820728-8b83bb6b773f?w=400&h=250&fit=crop",
-        views: 9100,
-        gameLink: "https://www.roblox.com/games/123456789/Game-Name",
-        script: `-- Auto Farm Script
+  },
+  {
+    id: 5,
+    title: "Auto Farm",
+    description: "Automatically farms resources for you. Set it and forget it!",
+    image: "https://images.unsplash.com/photo-1552820728-8b83bb6b773f?w=400&h=250&fit=crop",
+    views: 9100,
+    gameLink: "https://www.roblox.com/games/123456789/Game-Name",
+    script: `-- Auto Farm Script
 local player = game.Players.LocalPlayer
 local farming = true
-
 while farming do
     -- Your auto farm logic here
     wait(1)
 end`
-      },
-      {
-        id: 6,
-        title: "Anti-AFK",
-        description: "Prevents you from being kicked for inactivity. Stay in the game longer!",
-        image: "https://images.unsplash.com/photo-1556438064-2d7646166914?w=400&h=250&fit=crop",
-        views: 4700,
-        gameLink: "https://www.roblox.com/games/123456789/Game-Name",
-        script: `-- Anti-AFK Script
+  },
+  {
+    id: 6,
+    title: "Anti-AFK",
+    description: "Prevents you from being kicked for inactivity. Stay in the game longer!",
+    image: "https://images.unsplash.com/photo-1556438064-2d7646166914?w=400&h=250&fit=crop",
+    views: 4700,
+    gameLink: "https://www.roblox.com/games/123456789/Game-Name",
+    script: `-- Anti-AFK Script
 local VirtualUser = game:GetService("VirtualUser")
-
 game:GetService("Players").LocalPlayer.Idled:Connect(function()
     VirtualUser:CaptureController()
     VirtualUser:ClickButton2(Vector2.new())
 end)`
-      },
-    ];
+  },
+];
 
-    // Reusable SVGs (Flame, ArrowLeft, Copy)
-    function flameSVG(cls="") {
-      return `<svg xmlns="http://www.w3.org/2000/svg" class="${cls}" width="1em" height="1em" fill="none" viewBox="0 0 24 24"><path stroke="#f97316" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M17.896 17.61A7.53 7.53 0 0 1 12 21C8.228 21 5 18.53 5 15c0-2.42 1.128-5.041 2.674-7.144A13.275 13.275 0 0 1 12 3.5s2.595 2.663 3.267 5.607"></path><path stroke="#f97316" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M16 16h.01"></path></svg>`;
-    }
-    function arrowLeftSVG(cls="") {
-      return `<svg xmlns="http://www.w3.org/2000/svg" class="${cls}" width="1em" height="1em" fill="none" viewBox="0 0 24 24"><path stroke="#374151" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M12 19l-7-7 7-7"/><path stroke="#374151" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M19 12H5"/></svg>`;
-    }
-    function copySVG(cls="") {
-      return `<svg xmlns="http://www.w3.org/2000/svg" class="${cls}" width="1em" height="1em" fill="none" viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2" stroke="#fff" stroke-width="2"/><rect x="3" y="3" width="13" height="13" rx="2" stroke="#fff" stroke-width="2"/></svg>`;
-    }
+let trending = false;
+let currentScriptId = null;
 
-    function createPageUrl(hash) {
-      return "#" + hash;
+function formatViews(num) {
+  return num >= 1000 ? (num / 1000).toFixed(1) + "k" : num;
+}
+function showHome() {
+  trending = false;
+  currentScriptId = null;
+  renderMain();
+}
+function showTrending() {
+  trending = true;
+  currentScriptId = null;
+  renderMain();
+}
+function openScriptDetail(id) {
+  currentScriptId = id;
+  renderMain();
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+function copyToClipboard(scriptId) {
+  const script = SCRIPTS.find(s => s.id === Number(scriptId));
+  if(script){
+    if(navigator?.clipboard) {
+      navigator.clipboard.writeText(script.script);
+    }else{
+      let el=document.createElement('textarea');
+      el.value = script.script;
+      document.body.appendChild(el);
+      el.select();
+      document.execCommand('copy');
+      document.body.removeChild(el);
     }
-    function formatViews(num) {
-      return num >= 1000 ? (num / 1000).toFixed(1) + "k" : num;
-    }
-
-    // App State
-    let showTrending = false;
-    let currentPage = "Home";
-    let currentScriptId = null;
-
-    function renderHeader() {
-      return `
-      <header class="bg-white border-b border-gray-200 sticky top-0 z-50">
-        <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
-          <a href="${createPageUrl('Home')}" class="flex items-center gap-2" onclick="navigateHome(event)">
-            <div class="w-8 h-8 bg-indigo-600 rounded-lg flex items-center justify-center">
-              <span class="text-white font-bold text-lg">📜</span>
+    alert('Script copied!');
+  }
+}
+// Home/trending scripts page
+function renderMain() {
+  const el=document.getElementById('page-body');
+  if(currentScriptId === null) {
+    let ordered = SCRIPTS.slice();
+    if(trending) ordered.sort((a,b)=>b.views-a.views);
+    el.innerHTML = `
+      <h2 style="font-size:2em;font-weight:700;color:#222;margin-bottom:12px;">
+        ${trending? "Trending Scripts":"Recent Scripts"}
+      </h2>
+      <div class="grid-cards">
+        ${ordered.map(s=>`
+          <div class="card" onclick="openScriptDetail(${s.id})" style="cursor:pointer;">
+            <img src="${s.image}" alt="${s.title}"/>
+            <div class="card-content">
+              <div class="card-title">${s.title}</div>
+              <div class="card-views">👁 ${formatViews(s.views)} views</div>
+              <div class="card-desc">${s.description}</div>
+              ${s.gameLink? `<a class="card-link" href="${s.gameLink}" target="_blank" rel="noopener">🎮 Game</a>`:""}
             </div>
-            <span class="text-xl font-bold text-gray-900">ScriptBlox</span>
-          </a>
-          <nav class="flex items-center gap-6">
-            <button type="button" onclick="setTrending(false)" class="flex items-center gap-2 text-sm font-medium ${!showTrending ? 'text-indigo-600' : 'text-gray-700 hover:text-gray-900'}">
-              <span>🏠</span>
-              <span>Home</span>
-            </button>
-            <button type="button" onclick="setTrending(true)" class="flex items-center gap-2 text-sm font-medium ${showTrending ? 'text-indigo-600' : 'text-gray-700 hover:text-gray-900'}">
-              ${flameSVG("w-4 h-4")}
-              <span>Trending</span>
-            </button>
-          </nav>
+          </div>
+        `).join("")}
+      </div>
+    `;
+  } else {
+    // Details
+    const s = SCRIPTS.find(x=>x.id===Number(currentScriptId));
+    if(!s) { el.innerHTML="<p>Not found.</p>"; return;}
+    el.innerHTML = `
+      <div class="script-details">
+        <img src="${s.image}" alt="${s.title}"/>
+        <h1>${s.title}</h1>
+        <div style="font-size:1.03em;color:#888;margin-bottom:8px;">👁 ${formatViews(s.views)} views
+          ${s.gameLink? `<span style="margin-left:12px;"><a href="${s.gameLink}" target="_blank" rel="noopener" style="color:#4f46e5;text-decoration:underline;">🎮 Game link</a></span>`:""}
         </div>
-      </header>
-      `;
-    }
+        <div style="margin-bottom:12px;font-size:1.13em;color:#444">${s.description}</div>
+        <button class="copy-btn" onclick="copyToClipboard(${s.id})">Copy Script</button>
+        <pre>${s.script.replace(/</g,'&lt;')}</pre>
+      </div>
+    `;
+  }
+}
 
-    // Script card for grid
-    function scriptCard({id, title, image, views}) {
-      return `
-      <a href="${createPageUrl('ScriptDetails?id='+id)}" class="group relative bg-white rounded-xl overflow-hidden border border-gray-200 hover:shadow-lg transition-all duration-300" onclick="openScriptDetail(event, ${id})">
-        <div class="relative h-40 overflow-hidden bg-gray-100">
-          <img src="${image}" alt="${title}" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
-          <div class="absolute top-3 left-3 px-2.5 py-1 bg-black/60 backdrop-blur-sm rounded-md">
-            <span class="text-xs font-medium text-white">👁 ${formatViews(views)}</span>
-          </div>
-        </div>
-        <div class="p-4">
-          <h3 class="text-sm font-semibold text-gray-900 line-clamp-2">${title}</h3>
-        </div>
-      </a>`;
-    }
-
-    function renderHome() {
-      const displayScripts = showTrending ? [...SCRIPTS].sort((a, b) => b.views - a.views) : SCRIPTS;
-      return `
-        ${renderHeader()}
-        <main class="max-w-7xl mx-auto px-6 py-12">
-          <h1 class="text-3xl font-bold text-gray-900 mb-8 flex items-center gap-2">
-            ${showTrending ? "Top trending scripts" : "Check out recent trending scripts"}
-            <span>${flameSVG("w-7 h-7 text-orange-500")}</span>
-          </h1>
-          <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-            ${displayScripts.map(scriptCard).join('')}
-          </div>
-          ${displayScripts.length === 0 ? `
-            <div class="text-center py-20">
-              <p class="text-gray-400">No scripts available</p>
-            </div>
-          ` : ''}
-        </main>
-      `;
-    }
-
-    // ScriptDetails view
-    function renderScriptDetails(scriptId) {
-      const script = SCRIPTS.find(s => s.id === Number(scriptId));
-      const recommended = SCRIPTS.filter(s => s.id !== Number(scriptId)).slice(0,4);
-
-      if (!script) {
-        return `
-          <div class="min-h-screen bg-gray-50 flex items-center justify-center">
-            <div class="text-center px-6">
-              <h1 class="text-2xl font-bold text-gray-900 mb-2">Script Not Found</h1>
-              <p class="text-gray-500 mb-6">The script you're looking for doesn't exist.</p>
-              <a
-                href="${createPageUrl('Home')}"
-                class="inline-flex items-center gap-2 px-6 py-3 bg-indigo-600 text-white rounded-lg font-semibold hover:bg-indigo-700"
-                onclick="navigateHome(event)"
-              >
-                ${arrowLeftSVG("w-4 h-4")}
-                Back to Home
-              </a>
-            </div>
-          </div>
-        `;
-      }
-
-      return `
-        ${renderHeader()}
-        <main class="max-w-4xl mx-auto px-6 py-8">
-          <a
-            href="${createPageUrl('Home')}"
-            class="inline-flex items-center gap-2 text-gray-600 hover:text-gray-900 mb-6"
-            onclick="navigateHome(event)"
-          >
-            ${arrowLeftSVG("w-4 h-4")}
-            <span class="text-sm font-medium">Back</span>
-          </a>
-          <div class="bg-white rounded-2xl shadow-sm border border-gray-200 overflow-hidden">
-            <div class="relative h-64 bg-gray-100">
-              <img src="${script.image}" alt="${script.title}" class="w-full h-full object-cover"/>
-            </div>
-            <div class="p-8">
-              <div class="mb-6">
-                <h1 class="text-3xl font-bold text-gray-900 mb-2">${script.title}</h1>
-                <div class="flex items-center gap-4 text-sm text-gray-500">
-                  <span>👁 ${formatViews(script.views)} views</span>
-                  ${script.gameLink ? `<span>•</span>
-                  <a href="${script.gameLink}" target="_blank" rel="noopener noreferrer" class="text-indigo-600 hover:text-indigo-700 font-medium">
-                    🎮 Game Link
-                  </a>` : ''}
-                </div>
-              </div>
-              <div class="mb-8">
-                <h2 class="text-lg font-semibold text-gray-900 mb-3">Description</h2>
-                <div class="bg-gray-50 rounded-lg p-4">
-                  <p class="text-gray-700 text-sm">${script.description}</p>
-                </div>
-              </div>
-              <div>
-                <div class="flex items-center justify-between mb-3">
-                  <span class="text-sm font-medium text-gray-700">View Raw</span>
-                  <button class="flex items-center gap-2 px-4 py-2 bg-indigo-600 text-white text-sm font-medium rounded-lg hover:bg-indigo-700" onclick="copyToClipboard(${script.id})" id="copy-btn">
-                    ${copySVG("w-4 h-4")}
-                    <span id="copy-btn-text">Copy Script</span>
-                  </button>
-                </div>
-                <div class="bg-gray-50 rounded-lg p-6 overflow-x-auto border border-gray-200 font-mono">
-                  <pre class="text-sm leading-relaxed font-mono text-gray-800">${highlightCode(script.script)}</pre>
-                </div>
-              </div>
-            </div>
-          </div>
-          ${recommended.length ? `
-            <div class="mt-12">
-              <h2 class="text-2xl font-bold text-gray-900 mb-6 flex items-center gap-2">
-                More scripts you might like ${flameSVG("w-6 h-6 text-orange-500")}
-              </h2>
-              <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-                ${recommended.map(recScript => scriptCard(recScript)).join('')}
-              </div>
-            </div>
-          `: ''}
-        </main>
-      `;
-    }
-
-    // Syntax highlighting for Lua
-    function highlightCode(src) {
-      const keywords = ['local', 'function', 'if', 'end', 'return', 'for', 'while', 'do', 'then', 'else'];
-      return src.split('\n').map(line => {
-        let html = line;
-        if (line.trim().startsWith('--')) {
-          return `<div class="hover:bg-gray-100 px-2 -mx-2 rounded"><span class="text-green-600">${line.replace(/ /g,'&nbsp;')}</span></div>`;
-        }
-        let reg = new RegExp('\\b(' + keywords.join('|') + ')\\b', 'g');
-        html = html.replace(reg, `<span class="text-purple-600 font-semibold">$1</span>`);
-        return `<div class="hover:bg-gray-100 px-2 -mx-2 rounded">${html.replace(/ /g,'&nbsp;')}</div>`;
-      }).join('');
-    }
-
-    // Navigation
-    function openScriptDetail(e, id) {
-      e.preventDefault();
-      currentPage = "ScriptDetails";
-      currentScriptId = id;
-      render();
-      window.scrollTo(0,0);
-      window.location.hash = "ScriptDetails?id=" + id;
-    }
-    function navigateHome(e) {
-      e.preventDefault();
-      currentPage = "Home";
-      window.location.hash = "Home";
-      render();
-      window.scrollTo(0,0);
-    }
-    function setTrending(value) {
-      showTrending = value;
-      render();
-    }
-    function copyToClipboard(scriptId) {
-      const script = SCRIPTS.find(s => s.id === Number(scriptId));
-      if (script) {
-        if(navigator?.clipboard) {
-          navigator.clipboard.writeText(script.script);
-        } else {
-          let el = document.createElement('textarea');
-          el.value = script.script;
-          document.body.appendChild(el);
-          el.select();
-          document.execCommand('copy');
-          document.body.removeChild(el);
-        }
-        let btn = document.getElementById('copy-btn-text');
-        btn.textContent = 'Copied!';
-        setTimeout(()=>{btn.textContent = 'Copy Script';},2000);
-      }
-    }
-    // Hash navigation for direct links
-    function handleHash() {
-      if (window.location.hash.startsWith("#ScriptDetails?id=")) {
-        currentPage = "ScriptDetails";
-        currentScriptId = window.location.hash.split("=")[1];
-      } else {
-        currentPage = "Home";
-        currentScriptId = null;
-      }
-      render();
-    }
-    window.onhashchange = handleHash;
-
-    // Main Render
-    function render() {
-      const el = document.getElementById('app');
-      if (currentPage === "Home") {
-        el.innerHTML = renderHome();
-      } else if (currentPage === "ScriptDetails") {
-        el.innerHTML = renderScriptDetails(currentScriptId);
-      }
-    }
-
-    // First render
-    handleHash();
-
-    // Expose handlers for HTML inline
-    window.setTrending = setTrending;
-    window.openScriptDetail = openScriptDetail;
-    window.navigateHome = navigateHome;
-    window.copyToClipboard = copyToClipboard;
-  </script>
+// Initial render
+renderMain();
+window.openScriptDetail = openScriptDetail;
+window.showHome = showHome;
+window.showTrending = showTrending;
+window.copyToClipboard = copyToClipboard;
+</script>
 </body>
 </html>
