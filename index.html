@@ -2,11 +2,11 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=0" />
   <title>ScriptBlox</title>
   <link href="https://fonts.googleapis.com/css?family=Inter:400,500,700,900&display=swap" rel="stylesheet">
   <style>
-    body { font-family: 'Inter', system-ui, sans-serif; background: #f9fafb; margin: 0; padding: 0; min-height: 100vh; }
+    body { font-family: 'Inter', system-ui, sans-serif; background: #f9fafb; margin: 0; padding: 0; min-height: 100vh; width: 100%; overflow-x: hidden; }
     .bg-indigo-600 { background: #4f46e5; }
     .bg-white { background: #fff; }
     .rounded-xl { border-radius: 1rem; }
@@ -111,10 +111,19 @@
     .hover\:text-gray-900:hover {color: #111827;}
     .hover\:text-indigo-700:hover {color: #3730a3;}
     .group:hover .group-hover\:scale-110 {transform: scale(1.1);}
-    @media (max-width: 700px) {
-      .max-w-7xl, .max-w-4xl, main, header > div {max-width: 100% !important;}
+    
+    @media (max-width: 767px) {
+      .max-w-7xl, .max-w-4xl, main, header > div {max-width: 100% !important; padding-left: 1rem !important; padding-right: 1rem !important;}
       .grid-cols-2, .md\:grid-cols-3, .md\:grid-cols-4, .grid-cols-3, .grid-cols-4 {grid-template-columns: 1fr !important;}
+      .text-3xl { font-size: 1.5rem !important; }
+      .p-8 { padding: 1rem !important; }
+      .h-64 { height: 12rem !important; }
+      
+      /* Hide "Made with Replit" badge */
+      #replit-badge { display: none !important; }
+      iframe[src*="replit.com/badge"] { display: none !important; }
     }
+
     .cursor-pointer {cursor:pointer;}
     .overflow-x-auto {overflow-x:auto;}
     .border {border:1px solid #e5e7eb;}
@@ -129,6 +138,97 @@
     .leading-relaxed {line-height: 1.6;}
     a, button { outline:none;}
     .hidden {display:none;}
+
+    /* RESPONSIVE LAYOUT STYLES */
+    .layout-container {
+      display: flex;
+      max-width: 1200px;
+      margin: 0 auto;
+      flex-direction: column;
+      width: 100%;
+    }
+    .layout-content {
+      flex: 1;
+      min-width: 0;
+      width: 100%;
+    }
+    .layout-sidebar-right {
+      width: 160px;
+      min-width: 160px;
+      margin: 20px auto;
+    }
+    .layout-sidebar-left {
+      display: none; /* Removed as requested */
+    }
+    @media (min-width: 768px) {
+      .layout-container {
+        flex-direction: row;
+        align-items: flex-start;
+      }
+      .layout-sidebar-right {
+        margin: 0 0 0 20px;
+      }
+    }
+    
+    /* Phone Specific Ad Adjustments */
+    @media (max-width: 767px) {
+      .layout-sidebar-right {
+        width: 100% !important;
+        max-width: 320px !important;
+        min-width: 0 !important;
+        margin: 30px auto !important;
+        display: flex !important;
+        justify-content: center !important;
+      }
+      .layout-sidebar-right iframe {
+        max-width: 100% !important;
+      }
+      .layout-container {
+        gap: 20px !important;
+      }
+    }
+
+    .search-container {
+      position: relative;
+      max-width: 400px;
+      width: 100%;
+    }
+    .search-input {
+      width: 100%;
+      padding: 0.5rem 1rem 0.5rem 2.5rem;
+      border-radius: 0.5rem;
+      border: 1px solid #e5e7eb;
+      outline: none;
+      font-size: 0.875rem;
+    }
+    .search-icon {
+      position: absolute;
+      left: 0.75rem;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #9ca3af;
+      width: 1rem;
+      height: 1rem;
+    }
+    .ad-card {
+      background: white;
+      border-radius: 1rem;
+      border: 1px solid #e5e7eb;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 250px;
+      overflow: hidden;
+    }
+  </style>
+  <style>
+    /* Global Replit badge removal */
+    .replit-auth-button, #replit-badge, iframe[src*="replit.com/badge"], .replit-badge {
+      display: none !important;
+      visibility: hidden !important;
+      opacity: 0 !important;
+      pointer-events: none !important;
+    }
   </style>
   <!-- NEW AD SCRIPTS IN HEAD -->
   <script src="https://pl28354591.effectivegatecpm.com/71/57/18/7157184b3004eeaf20954e0076346feb.js"></script>
@@ -136,7 +236,7 @@
 </head>
 <body>
   <!-- 728x90 banner under header (centered) -->
-  <div style="display:flex;justify-content:center;margin:20px 0;">
+  <div style="display:flex;justify-content:center;margin:20px 0; max-width: 100%; overflow: hidden;">
     <script>
       atOptions = {
         'key' : '063119b72d9b7e12b26344c8d96ecc88',
@@ -149,13 +249,14 @@
     <script src="https://www.highperformanceformat.com/063119b72d9b7e12b26344c8d96ecc88/invoke.js"></script>
   </div>
 
-  <div style="display: flex; max-width: 1200px; margin: 0 auto;">
-    <div style="flex: 1;">
-      <!-- Main app container -->
+  <div class="layout-container">
+    <!-- Main app container -->
+    <div class="layout-content">
       <div id="app"></div>
     </div>
-    <!-- 160x600 banner right sidebar -->
-    <div style="width:160px;min-width:160px;margin-left:20px;">
+
+    <!-- 160x600 banner right -->
+    <div class="layout-sidebar-right">
       <script>
         atOptions = {
           'key' : '183ae01d06f739dd1de52c42fd74dde7',
@@ -169,12 +270,7 @@
     </div>
   </div>
 
-  <!-- Container ad and script at the bottom -->
-  <script async="async" data-cfasync="false" src="https://pl28354595.effectivegatecpm.com/671cae43d60bafcf64313bd137e03494/invoke.js"></script>
-  <div id="container-671cae43d60bafcf64313bd137e03494"></div>
-
   <script>
-    // SCRIPTS data, exactly as your original array
     const SCRIPTS = [
       {
         id: 1,
@@ -299,7 +395,6 @@ end)`
       },
     ];
 
-    // Reusable SVGs (Flame, ArrowLeft, Copy)
     function flameSVG(cls="") {
       return `<svg xmlns="http://www.w3.org/2000/svg" class="${cls}" width="1em" height="1em" fill="none" viewBox="0 0 24 24"><path stroke="#f97316" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M17.896 17.61A7.53 7.53 0 0 1 12 21C8.228 21 5 18.53 5 15c0-2.42 1.128-5.041 2.674-7.144A13.275 13.275 0 0 1 12 3.5s2.595 2.663 3.267 5.607"></path><path stroke="#f97316" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M16 16h.01"></path></svg>`;
     }
@@ -309,6 +404,9 @@ end)`
     function copySVG(cls="") {
       return `<svg xmlns="http://www.w3.org/2000/svg" class="${cls}" width="1em" height="1em" fill="none" viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2" stroke="#fff" stroke-width="2"/><rect x="3" y="3" width="13" height="13" rx="2" stroke="#fff" stroke-width="2"/></svg>`;
     }
+    function searchSVG(cls="") {
+      return `<svg xmlns="http://www.w3.org/2000/svg" class="${cls}" width="1em" height="1em" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>`;
+    }
 
     function createPageUrl(hash) {
       return "#" + hash;
@@ -317,10 +415,10 @@ end)`
       return num >= 1000 ? (num / 1000).toFixed(1) + "k" : num;
     }
 
-    // App State
     let showTrending = false;
     let currentPage = "Home";
     let currentScriptId = null;
+    let searchQuery = "";
 
     function renderHeader() {
       return `
@@ -332,6 +430,10 @@ end)`
             </div>
             <span class="text-xl font-bold text-gray-900">ScriptBlox</span>
           </a>
+          <div class="hidden md:block search-container mx-4">
+            ${searchSVG("search-icon")}
+            <input type="text" placeholder="Search scripts..." class="search-input" oninput="handleSearch(event)" value="${searchQuery}" />
+          </div>
           <nav class="flex items-center gap-6">
             <button type="button" onclick="setTrending(false)" class="flex items-center gap-2 text-sm font-medium ${!showTrending ? 'text-indigo-600' : 'text-gray-700 hover:text-gray-900'}">
               <span>🏠</span>
@@ -343,11 +445,16 @@ end)`
             </button>
           </nav>
         </div>
+        <div class="md:hidden px-6 pb-4">
+          <div class="search-container">
+            ${searchSVG("search-icon")}
+            <input type="text" placeholder="Search scripts..." class="search-input" oninput="handleSearch(event)" value="${searchQuery}" />
+          </div>
+        </div>
       </header>
       `;
     }
 
-    // Script card for grid
     function scriptCard({id, title, image, views}) {
       return `
       <a href="${createPageUrl('ScriptDetails?id='+id)}" class="group relative bg-white rounded-xl overflow-hidden border border-gray-200 hover:shadow-lg transition-all duration-300" onclick="openScriptDetail(event, ${id})">
@@ -363,8 +470,36 @@ end)`
       </a>`;
     }
 
+    function adCard() {
+      const adId = "ad-" + Math.random().toString(36).substr(2, 9);
+      setTimeout(() => {
+        const container = document.getElementById(adId);
+        if (container) {
+          const script1 = document.createElement('script');
+          script1.innerHTML = `atOptions = { 'key' : '1ef66bfa49c8e8c61e549d1d71b76b76', 'format' : 'iframe', 'height' : 250, 'width' : 300, 'params' : {} };`;
+          container.appendChild(script1);
+          const script2 = document.createElement('script');
+          script2.src = 'https://www.highperformanceformat.com/1ef66bfa49c8e8c61e549d1d71b76b76/invoke.js';
+          container.appendChild(script2);
+        }
+      }, 0);
+      return `<div id="${adId}" class="ad-card"></div>`;
+    }
+
     function renderHome() {
-      const displayScripts = showTrending ? [...SCRIPTS].sort((a, b) => b.views - a.views) : SCRIPTS;
+      let displayScripts = showTrending ? [...SCRIPTS].sort((a, b) => b.views - a.views) : SCRIPTS;
+      if (searchQuery) {
+        displayScripts = displayScripts.filter(s => s.title.toLowerCase().includes(searchQuery.toLowerCase()));
+      }
+
+      const gridItems = [];
+      displayScripts.forEach((script, index) => {
+        gridItems.push(scriptCard(script));
+        if ((index + 1) % 2 === 0) {
+          gridItems.push(adCard());
+        }
+      });
+
       return `
         ${renderHeader()}
         <main class="max-w-7xl mx-auto px-6 py-12">
@@ -373,18 +508,17 @@ end)`
             <span>${flameSVG("w-7 h-7 text-orange-500")}</span>
           </h1>
           <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-            ${displayScripts.map(scriptCard).join('')}
+            ${gridItems.join('')}
           </div>
           ${displayScripts.length === 0 ? `
             <div class="text-center py-20">
-              <p class="text-gray-400">No scripts available</p>
+              <p class="text-gray-400">No scripts found matching "${searchQuery}"</p>
             </div>
           ` : ''}
         </main>
       `;
     }
 
-    // ScriptDetails view
     function renderScriptDetails(scriptId) {
       const script = SCRIPTS.find(s => s.id === Number(scriptId));
       const recommended = SCRIPTS.filter(s => s.id !== Number(scriptId)).slice(0,4);
@@ -395,11 +529,7 @@ end)`
             <div class="text-center px-6">
               <h1 class="text-2xl font-bold text-gray-900 mb-2">Script Not Found</h1>
               <p class="text-gray-500 mb-6">The script you're looking for doesn't exist.</p>
-              <a
-                href="${createPageUrl('Home')}"
-                class="inline-flex items-center gap-2 px-6 py-3 bg-indigo-600 text-white rounded-lg font-semibold hover:bg-indigo-700"
-                onclick="navigateHome(event)"
-              >
+              <a href="${createPageUrl('Home')}" class="inline-flex items-center gap-2 px-6 py-3 bg-indigo-600 text-white rounded-lg font-semibold hover:bg-indigo-700" onclick="navigateHome(event)">
                 ${arrowLeftSVG("w-4 h-4")}
                 Back to Home
               </a>
@@ -408,14 +538,18 @@ end)`
         `;
       }
 
+      const recommendedItems = [];
+      recommended.forEach((recScript, index) => {
+        recommendedItems.push(scriptCard(recScript));
+        if ((index + 1) % 2 === 0) {
+          recommendedItems.push(adCard());
+        }
+      });
+
       return `
         ${renderHeader()}
         <main class="max-w-4xl mx-auto px-6 py-8">
-          <a
-            href="${createPageUrl('Home')}"
-            class="inline-flex items-center gap-2 text-gray-600 hover:text-gray-900 mb-6"
-            onclick="navigateHome(event)"
-          >
+          <a href="${createPageUrl('Home')}" class="inline-flex items-center gap-2 text-gray-600 hover:text-gray-900 mb-6" onclick="navigateHome(event)">
             ${arrowLeftSVG("w-4 h-4")}
             <span class="text-sm font-medium">Back</span>
           </a>
@@ -460,7 +594,7 @@ end)`
                 More scripts you might like ${flameSVG("w-6 h-6 text-orange-500")}
               </h2>
               <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-                ${recommended.map(recScript => scriptCard(recScript)).join('')}
+                ${recommendedItems.join('')}
               </div>
             </div>
           `: ''}
@@ -468,7 +602,6 @@ end)`
       `;
     }
 
-    // Syntax highlighting for Lua
     function highlightCode(src) {
       const keywords = ['local', 'function', 'if', 'end', 'return', 'for', 'while', 'do', 'then', 'else'];
       return src.split('\n').map(line => {
@@ -482,7 +615,10 @@ end)`
       }).join('');
     }
 
-    // Navigation
+    function handleSearch(e) {
+      searchQuery = e.target.value;
+      render();
+    }
     function openScriptDetail(e, id) {
       e.preventDefault();
       currentPage = "ScriptDetails";
@@ -518,9 +654,11 @@ end)`
         let btn = document.getElementById('copy-btn-text');
         btn.textContent = 'Copied!';
         setTimeout(()=>{btn.textContent = 'Copy Script';},2000);
+        
+        // Open smart link
+        window.open("https://www.effectivegatecpm.com/uw2i16p1e?key=24001f0b404d36d6c209c0c5be845eb0", "_blank");
       }
     }
-    // Hash navigation for direct links
     function handleHash() {
       if (window.location.hash.startsWith("#ScriptDetails?id=")) {
         currentPage = "ScriptDetails";
@@ -533,7 +671,6 @@ end)`
     }
     window.onhashchange = handleHash;
 
-    // Main Render
     function render() {
       const el = document.getElementById('app');
       if (currentPage === "Home") {
@@ -543,14 +680,12 @@ end)`
       }
     }
 
-    // First render
     handleHash();
-
-    // Expose handlers for HTML inline
     window.setTrending = setTrending;
     window.openScriptDetail = openScriptDetail;
     window.navigateHome = navigateHome;
     window.copyToClipboard = copyToClipboard;
+    window.handleSearch = handleSearch;
   </script>
 </body>
 </html>
