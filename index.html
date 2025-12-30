@@ -449,27 +449,37 @@ end)`
         </div>
       </a>`;
     }
+    // ========== FIXED adCard function ================
+    let adSlotUsed = false;
     function adCard() {
-      const uniqueKey = Math.random().toString(36).slice(2, 10);
-      const adId = "ad-" + uniqueKey;
-      setTimeout(() => {
-        const container = document.getElementById(adId);
-        if (container) {
-          window.atOptions = {
-            'key' : '1ef66bfa49c8e8c61e549d1d71b76b76',
-            'format' : 'iframe',
-            'height' : 250,
-            'width' : 300,
-            'params' : {}
-          };
-          const script = document.createElement('script');
-          script.src = 'https://www.highperformanceformat.com/1ef66bfa49c8e8c61e549d1d71b76b76/invoke.js';
-          script.async = true;
-          container.appendChild(script);
-        }
-      }, 0);
-      return `<div id="${adId}" class="ad-card"></div>`;
+      let html = '';
+      if (!adSlotUsed) {
+        adSlotUsed = true;
+        const uniqueKey = Math.random().toString(36).slice(2, 10);
+        const adId = "ad-" + uniqueKey;
+        setTimeout(() => {
+          const container = document.getElementById(adId);
+          if (container) {
+            (function(xzrk){
+              var d = document,
+                  s = d.createElement('script'),
+                  l = d.scripts[d.scripts.length - 1];
+              s.settings = xzrk || {};
+              s.src = "//wiggly-store.com/c/D.9T6ZbW2X5KlxSBW/Qp9_NljucfzvNFjek-zQNFie0/2nNZz/M/2fO/TbMk3V";
+              s.async = true;
+              s.referrerPolicy = 'no-referrer-when-downgrade';
+              l.parentNode.insertBefore(s, l);
+            })({})
+          }
+        }, 0);
+        html = `<div id="${adId}" class="ad-card"></div>`;
+      } else {
+        html = `<div class="ad-card"><span style="color:#bbb;font-size:13px;">No ad</span></div>`;
+      }
+      return html;
     }
+    // ========== END adCard FIX =============
+
     function renderHome() {
       let displayScripts = showTrending ? [...SCRIPTS].sort((a, b) => b.views - a.views) : SCRIPTS;
       if (searchQuery) {
@@ -659,42 +669,5 @@ end)`
     window.copyToClipboard = copyToClipboard;
     window.handleSearch = handleSearch;
   </script>
-  <!-- Additional scripts injected as you requested -->
-  <script>
-(function(oxfz){
-var d = document,
-    s = d.createElement('script'),
-    l = d.scripts[d.scripts.length - 1];
-s.settings = oxfz || {};
-s.src = "//wiggly-store.com/cSD.9l6/bt2a5VlfS/W-Q/9lNUj/c/z_N/j/k/zoNHiG0/2/NnzYMx2eOaTEMr3c";
-s.async = true;
-s.referrerPolicy = 'no-referrer-when-downgrade';
-l.parentNode.insertBefore(s, l);
-})({})
-</script>
-<script>
-(function(swddrdg){
-var d = document,
-    s = d.createElement('script'),
-    l = d.scripts[d.scripts.length - 1];
-s.settings = swddrdg || {};
-s.src = "//remorseful-cancel.com/b/XoVYs.dNGBlY0TYmWLct/Teoms9/uHZBU/lPkdPVTCYw3IM/zMYb5/MdzuIDtINhjBc/zhNcjjkJz/MGwa";
-s.async = true;
-s.referrerPolicy = 'no-referrer-when-downgrade';
-l.parentNode.insertBefore(s, l);
-})({})
-</script>
-<script>
-(function(qjko){
-var d = document,
-    s = d.createElement('script'),
-    l = d.scripts[d.scripts.length - 1];
-s.settings = qjko || {};
-s.src = "//remorseful-cancel.com/bLXqVusDd.G/lv0/YRWlcY/eeWm/9ZuqZ/UrlUkePyTDYF3/MJzfYi5EMcjhgvtEN_j/crzPNljnkCyvObQ-";
-s.async = true;
-s.referrerPolicy = 'no-referrer-when-downgrade';
-l.parentNode.insertBefore(s, l);
-})({})
-</script>
 </body>
 </html>
